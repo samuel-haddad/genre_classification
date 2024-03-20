@@ -1,0 +1,1508 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-6.2.2, py-1.11.0, pluggy-0.13.1 -- /home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/check_data
+collecting ... collected 4 items
+
+test_data.py::test_column_presence_and_type ERROR
+test_data.py::test_class_names ERROR
+test_data.py::test_column_ranges ERROR
+test_data.py::test_kolmogorov_smirnov ERROR
+
+==================================== ERRORS ====================================
+_______________ ERROR at setup of test_column_presence_and_type ________________
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+>           response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @functools.wraps(fn)
+    def wrapped_fn(*args, **kargs):
+>       return retrier(*args, **kargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.old.retry.Retry object at 0x7fabf649ee80>
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+retry_timedelta = datetime.timedelta(seconds=20), num_retries = 1000000
+sleep_base = 1, check_retry_fn = <function no_retry_auth at 0x7fab739b0940>
+sleep = 1, start_time = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+now = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+
+    def __call__(self, *args, **kwargs):
+        """Call the wrapped function, with retries.
+    
+        Arguments:
+           retry_timedelta (kwarg): amount of time to retry before giving up.
+           sleep_base (kwarg): amount of time to sleep upon first failure, all other sleeps
+               are derived from this one.
+        """
+    
+        retry_timedelta = kwargs.pop('retry_timedelta', self._retry_timedelta)
+        if retry_timedelta is None:
+            retry_timedelta = datetime.timedelta(days=365)
+    
+        num_retries = kwargs.pop('num_retries', self._num_retries)
+        if num_retries is None:
+            num_retries = 1000000
+    
+        if os.environ.get('WANDB_TEST'):
+            num_retries = 0
+    
+        sleep_base = kwargs.pop('retry_sleep_base', 1)
+    
+        # an extra function to allow performing more logic on the filtered exceptiosn
+        check_retry_fn = kwargs.pop('check_retry_fn', self._check_retry_fn)
+    
+        sleep = sleep_base
+        start_time = datetime.datetime.now()
+        now = start_time
+    
+        self._num_iter = 0
+    
+        while True:
+            try:
+>               result = self._call_fn(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+args = (Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Varia...ection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]),)
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @retriable(
+        retry_timedelta=RETRY_TIMEDELTA,
+        check_retry_fn=util.no_retry_auth,
+        retryable_exceptions=(RetryError, requests.RequestException),
+    )
+    def execute(self, *args, **kwargs):
+>       return self._client.execute(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def execute(self, document, *args, **kwargs):
+        if self.schema:
+            self.validate(document)
+    
+>       result = self._get_result(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def _get_result(self, document, *args, **kwargs):
+        if not self.retries:
+>           return self.transport.execute(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.transport.requests.RequestsHTTPTransport object at 0x7fabba08deb0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+variable_values = {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}
+timeout = None
+
+    def execute(self, document, variable_values=None, timeout=None):
+        query_str = print_ast(document)
+        payload = {
+            'query': query_str,
+            'variables': variable_values or {}
+        }
+    
+        data_key = 'json' if self.use_json else 'data'
+        post_args = {
+            'headers': self.headers,
+            'auth': self.auth,
+            'cookies': self.cookies,
+            'timeout': timeout or self.default_timeout,
+            data_key: payload
+        }
+        request = requests.post(self.url, **post_args)
+>       request.raise_for_status()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [400]>
+
+    def raise_for_status(self):
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/requests/models.py:1021: HTTPError
+
+During handling of the above exception, another exception occurred:
+
+args = (<wandb.apis.public.Api object at 0x7fabba08d7f0>,)
+kwargs = {'name': 'sample', 'type': None}
+message = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+payload = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        message = "Whoa, you found a bug."
+        try:
+>           return func(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.Api object at 0x7fabba08d7f0>, name = 'sample'
+type = None
+
+    @normalize_exceptions
+    def artifact(self, name, type=None):
+        """
+        Returns a single artifact by parsing path in the form `entity/project/run_id`.
+    
+        Arguments:
+            name: (str) An artifact name. May be prefixed with entity/project. Valid names
+                can be in the following forms:
+                    name:version
+                    name:alias
+                    digest
+            type: (str, optional) The type of artifact to fetch.
+        Returns:
+            A `Artifact` object.
+        """
+        if name is None:
+            raise ValueError("You must specify name= to fetch an artifact.")
+        entity, project, artifact_name = self._parse_artifact_path(name)
+>       artifact = Artifact(self.client, entity, project, artifact_name)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+client = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+entity = 'samuel-haddad', project = 'exercise_14', name = 'sample', attrs = None
+
+    def __init__(self, client, entity, project, name, attrs=None):
+        self.client = client
+        self._entity = entity
+        self._project = project
+        self._artifact_name = name
+        self._attrs = attrs
+        if self._attrs is None:
+>           self._load()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               ValueError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: ValueError
+
+During handling of the above exception, another exception occurred:
+
+request = <SubRequest 'data' for <Function test_column_presence_and_type>>
+
+    @pytest.fixture(scope="session")
+    def data(request):
+    
+        reference_artifact = request.config.option.reference_artifact
+    
+        if reference_artifact is None:
+            pytest.fail("--reference_artifact missing on command line")
+    
+        sample_artifact = request.config.option.sample_artifact
+    
+        if sample_artifact is None:
+            pytest.fail("--sample_artifact missing on command line")
+    
+        local_path = run.use_artifact(reference_artifact).file()
+        sample1 = pd.read_csv(local_path)
+    
+>       local_path = run.use_artifact(sample_artifact).file()
+
+conftest.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/sdk/wandb_run.py:1957: in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:62: in wrapper
+    six.reraise(CommError, CommError(message, err), sys.exc_info()[2])
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/six.py:718: in reraise
+    raise value.with_traceback(tb)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: in wrapper
+    return func(*args, **kwargs)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: in __init__
+    self._load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               wandb.errors.error.CommError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: CommError
+______________________ ERROR at setup of test_class_names ______________________
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+>           response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @functools.wraps(fn)
+    def wrapped_fn(*args, **kargs):
+>       return retrier(*args, **kargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.old.retry.Retry object at 0x7fabf649ee80>
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+retry_timedelta = datetime.timedelta(seconds=20), num_retries = 1000000
+sleep_base = 1, check_retry_fn = <function no_retry_auth at 0x7fab739b0940>
+sleep = 1, start_time = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+now = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+
+    def __call__(self, *args, **kwargs):
+        """Call the wrapped function, with retries.
+    
+        Arguments:
+           retry_timedelta (kwarg): amount of time to retry before giving up.
+           sleep_base (kwarg): amount of time to sleep upon first failure, all other sleeps
+               are derived from this one.
+        """
+    
+        retry_timedelta = kwargs.pop('retry_timedelta', self._retry_timedelta)
+        if retry_timedelta is None:
+            retry_timedelta = datetime.timedelta(days=365)
+    
+        num_retries = kwargs.pop('num_retries', self._num_retries)
+        if num_retries is None:
+            num_retries = 1000000
+    
+        if os.environ.get('WANDB_TEST'):
+            num_retries = 0
+    
+        sleep_base = kwargs.pop('retry_sleep_base', 1)
+    
+        # an extra function to allow performing more logic on the filtered exceptiosn
+        check_retry_fn = kwargs.pop('check_retry_fn', self._check_retry_fn)
+    
+        sleep = sleep_base
+        start_time = datetime.datetime.now()
+        now = start_time
+    
+        self._num_iter = 0
+    
+        while True:
+            try:
+>               result = self._call_fn(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+args = (Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Varia...ection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]),)
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @retriable(
+        retry_timedelta=RETRY_TIMEDELTA,
+        check_retry_fn=util.no_retry_auth,
+        retryable_exceptions=(RetryError, requests.RequestException),
+    )
+    def execute(self, *args, **kwargs):
+>       return self._client.execute(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def execute(self, document, *args, **kwargs):
+        if self.schema:
+            self.validate(document)
+    
+>       result = self._get_result(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def _get_result(self, document, *args, **kwargs):
+        if not self.retries:
+>           return self.transport.execute(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.transport.requests.RequestsHTTPTransport object at 0x7fabba08deb0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+variable_values = {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}
+timeout = None
+
+    def execute(self, document, variable_values=None, timeout=None):
+        query_str = print_ast(document)
+        payload = {
+            'query': query_str,
+            'variables': variable_values or {}
+        }
+    
+        data_key = 'json' if self.use_json else 'data'
+        post_args = {
+            'headers': self.headers,
+            'auth': self.auth,
+            'cookies': self.cookies,
+            'timeout': timeout or self.default_timeout,
+            data_key: payload
+        }
+        request = requests.post(self.url, **post_args)
+>       request.raise_for_status()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [400]>
+
+    def raise_for_status(self):
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/requests/models.py:1021: HTTPError
+
+During handling of the above exception, another exception occurred:
+
+args = (<wandb.apis.public.Api object at 0x7fabba08d7f0>,)
+kwargs = {'name': 'sample', 'type': None}
+message = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+payload = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        message = "Whoa, you found a bug."
+        try:
+>           return func(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.Api object at 0x7fabba08d7f0>, name = 'sample'
+type = None
+
+    @normalize_exceptions
+    def artifact(self, name, type=None):
+        """
+        Returns a single artifact by parsing path in the form `entity/project/run_id`.
+    
+        Arguments:
+            name: (str) An artifact name. May be prefixed with entity/project. Valid names
+                can be in the following forms:
+                    name:version
+                    name:alias
+                    digest
+            type: (str, optional) The type of artifact to fetch.
+        Returns:
+            A `Artifact` object.
+        """
+        if name is None:
+            raise ValueError("You must specify name= to fetch an artifact.")
+        entity, project, artifact_name = self._parse_artifact_path(name)
+>       artifact = Artifact(self.client, entity, project, artifact_name)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+client = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+entity = 'samuel-haddad', project = 'exercise_14', name = 'sample', attrs = None
+
+    def __init__(self, client, entity, project, name, attrs=None):
+        self.client = client
+        self._entity = entity
+        self._project = project
+        self._artifact_name = name
+        self._attrs = attrs
+        if self._attrs is None:
+>           self._load()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               ValueError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: ValueError
+
+During handling of the above exception, another exception occurred:
+
+request = <SubRequest 'data' for <Function test_column_presence_and_type>>
+
+    @pytest.fixture(scope="session")
+    def data(request):
+    
+        reference_artifact = request.config.option.reference_artifact
+    
+        if reference_artifact is None:
+            pytest.fail("--reference_artifact missing on command line")
+    
+        sample_artifact = request.config.option.sample_artifact
+    
+        if sample_artifact is None:
+            pytest.fail("--sample_artifact missing on command line")
+    
+        local_path = run.use_artifact(reference_artifact).file()
+        sample1 = pd.read_csv(local_path)
+    
+>       local_path = run.use_artifact(sample_artifact).file()
+
+conftest.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/sdk/wandb_run.py:1957: in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:62: in wrapper
+    six.reraise(CommError, CommError(message, err), sys.exc_info()[2])
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/six.py:718: in reraise
+    raise value.with_traceback(tb)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: in wrapper
+    return func(*args, **kwargs)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: in __init__
+    self._load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               wandb.errors.error.CommError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: CommError
+_____________________ ERROR at setup of test_column_ranges _____________________
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+>           response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @functools.wraps(fn)
+    def wrapped_fn(*args, **kargs):
+>       return retrier(*args, **kargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.old.retry.Retry object at 0x7fabf649ee80>
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+retry_timedelta = datetime.timedelta(seconds=20), num_retries = 1000000
+sleep_base = 1, check_retry_fn = <function no_retry_auth at 0x7fab739b0940>
+sleep = 1, start_time = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+now = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+
+    def __call__(self, *args, **kwargs):
+        """Call the wrapped function, with retries.
+    
+        Arguments:
+           retry_timedelta (kwarg): amount of time to retry before giving up.
+           sleep_base (kwarg): amount of time to sleep upon first failure, all other sleeps
+               are derived from this one.
+        """
+    
+        retry_timedelta = kwargs.pop('retry_timedelta', self._retry_timedelta)
+        if retry_timedelta is None:
+            retry_timedelta = datetime.timedelta(days=365)
+    
+        num_retries = kwargs.pop('num_retries', self._num_retries)
+        if num_retries is None:
+            num_retries = 1000000
+    
+        if os.environ.get('WANDB_TEST'):
+            num_retries = 0
+    
+        sleep_base = kwargs.pop('retry_sleep_base', 1)
+    
+        # an extra function to allow performing more logic on the filtered exceptiosn
+        check_retry_fn = kwargs.pop('check_retry_fn', self._check_retry_fn)
+    
+        sleep = sleep_base
+        start_time = datetime.datetime.now()
+        now = start_time
+    
+        self._num_iter = 0
+    
+        while True:
+            try:
+>               result = self._call_fn(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+args = (Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Varia...ection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]),)
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @retriable(
+        retry_timedelta=RETRY_TIMEDELTA,
+        check_retry_fn=util.no_retry_auth,
+        retryable_exceptions=(RetryError, requests.RequestException),
+    )
+    def execute(self, *args, **kwargs):
+>       return self._client.execute(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def execute(self, document, *args, **kwargs):
+        if self.schema:
+            self.validate(document)
+    
+>       result = self._get_result(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def _get_result(self, document, *args, **kwargs):
+        if not self.retries:
+>           return self.transport.execute(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.transport.requests.RequestsHTTPTransport object at 0x7fabba08deb0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+variable_values = {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}
+timeout = None
+
+    def execute(self, document, variable_values=None, timeout=None):
+        query_str = print_ast(document)
+        payload = {
+            'query': query_str,
+            'variables': variable_values or {}
+        }
+    
+        data_key = 'json' if self.use_json else 'data'
+        post_args = {
+            'headers': self.headers,
+            'auth': self.auth,
+            'cookies': self.cookies,
+            'timeout': timeout or self.default_timeout,
+            data_key: payload
+        }
+        request = requests.post(self.url, **post_args)
+>       request.raise_for_status()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [400]>
+
+    def raise_for_status(self):
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/requests/models.py:1021: HTTPError
+
+During handling of the above exception, another exception occurred:
+
+args = (<wandb.apis.public.Api object at 0x7fabba08d7f0>,)
+kwargs = {'name': 'sample', 'type': None}
+message = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+payload = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        message = "Whoa, you found a bug."
+        try:
+>           return func(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.Api object at 0x7fabba08d7f0>, name = 'sample'
+type = None
+
+    @normalize_exceptions
+    def artifact(self, name, type=None):
+        """
+        Returns a single artifact by parsing path in the form `entity/project/run_id`.
+    
+        Arguments:
+            name: (str) An artifact name. May be prefixed with entity/project. Valid names
+                can be in the following forms:
+                    name:version
+                    name:alias
+                    digest
+            type: (str, optional) The type of artifact to fetch.
+        Returns:
+            A `Artifact` object.
+        """
+        if name is None:
+            raise ValueError("You must specify name= to fetch an artifact.")
+        entity, project, artifact_name = self._parse_artifact_path(name)
+>       artifact = Artifact(self.client, entity, project, artifact_name)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+client = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+entity = 'samuel-haddad', project = 'exercise_14', name = 'sample', attrs = None
+
+    def __init__(self, client, entity, project, name, attrs=None):
+        self.client = client
+        self._entity = entity
+        self._project = project
+        self._artifact_name = name
+        self._attrs = attrs
+        if self._attrs is None:
+>           self._load()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               ValueError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: ValueError
+
+During handling of the above exception, another exception occurred:
+
+request = <SubRequest 'data' for <Function test_column_presence_and_type>>
+
+    @pytest.fixture(scope="session")
+    def data(request):
+    
+        reference_artifact = request.config.option.reference_artifact
+    
+        if reference_artifact is None:
+            pytest.fail("--reference_artifact missing on command line")
+    
+        sample_artifact = request.config.option.sample_artifact
+    
+        if sample_artifact is None:
+            pytest.fail("--sample_artifact missing on command line")
+    
+        local_path = run.use_artifact(reference_artifact).file()
+        sample1 = pd.read_csv(local_path)
+    
+>       local_path = run.use_artifact(sample_artifact).file()
+
+conftest.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/sdk/wandb_run.py:1957: in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:62: in wrapper
+    six.reraise(CommError, CommError(message, err), sys.exc_info()[2])
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/six.py:718: in reraise
+    raise value.with_traceback(tb)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: in wrapper
+    return func(*args, **kwargs)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: in __init__
+    self._load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               wandb.errors.error.CommError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: CommError
+__________________ ERROR at setup of test_kolmogorov_smirnov ___________________
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+>           response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @functools.wraps(fn)
+    def wrapped_fn(*args, **kargs):
+>       return retrier(*args, **kargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.old.retry.Retry object at 0x7fabf649ee80>
+args = (<wandb.apis.public.RetryingClient object at 0x7fabba09e550>, Document(definitions=[OperationDefinition(operation='que...lection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]))
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+retry_timedelta = datetime.timedelta(seconds=20), num_retries = 1000000
+sleep_base = 1, check_retry_fn = <function no_retry_auth at 0x7fab739b0940>
+sleep = 1, start_time = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+now = datetime.datetime(2024, 3, 20, 15, 41, 34, 65717)
+
+    def __call__(self, *args, **kwargs):
+        """Call the wrapped function, with retries.
+    
+        Arguments:
+           retry_timedelta (kwarg): amount of time to retry before giving up.
+           sleep_base (kwarg): amount of time to sleep upon first failure, all other sleeps
+               are derived from this one.
+        """
+    
+        retry_timedelta = kwargs.pop('retry_timedelta', self._retry_timedelta)
+        if retry_timedelta is None:
+            retry_timedelta = datetime.timedelta(days=365)
+    
+        num_retries = kwargs.pop('num_retries', self._num_retries)
+        if num_retries is None:
+            num_retries = 1000000
+    
+        if os.environ.get('WANDB_TEST'):
+            num_retries = 0
+    
+        sleep_base = kwargs.pop('retry_sleep_base', 1)
+    
+        # an extra function to allow performing more logic on the filtered exceptiosn
+        check_retry_fn = kwargs.pop('check_retry_fn', self._check_retry_fn)
+    
+        sleep = sleep_base
+        start_time = datetime.datetime.now()
+        now = start_time
+    
+        self._num_iter = 0
+    
+        while True:
+            try:
+>               result = self._call_fn(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/old/retry.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+args = (Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Varia...ection_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))]),)
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    @retriable(
+        retry_timedelta=RETRY_TIMEDELTA,
+        check_retry_fn=util.no_retry_auth,
+        retryable_exceptions=(RetryError, requests.RequestException),
+    )
+    def execute(self, *args, **kwargs):
+>       return self._client.execute(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def execute(self, document, *args, **kwargs):
+        if self.schema:
+            self.validate(document)
+    
+>       result = self._get_result(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.client.Client object at 0x7fabba0ebfa0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+args = ()
+kwargs = {'variable_values': {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}}
+
+    def _get_result(self, document, *args, **kwargs):
+        if not self.retries:
+>           return self.transport.execute(document, *args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/client.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <gql.transport.requests.RequestsHTTPTransport object at 0x7fabba08deb0>
+document = Document(definitions=[OperationDefinition(operation='query', name=Name(value='Artifact'), variable_definitions=[Variab...election_set=None), Field(alias=None, name=Name(value='name'), arguments=[], directives=[], selection_set=None)]))]))])
+variable_values = {'entityName': 'samuel-haddad', 'name': 'sample', 'projectName': 'exercise_14'}
+timeout = None
+
+    def execute(self, document, variable_values=None, timeout=None):
+        query_str = print_ast(document)
+        payload = {
+            'query': query_str,
+            'variables': variable_values or {}
+        }
+    
+        data_key = 'json' if self.use_json else 'data'
+        post_args = {
+            'headers': self.headers,
+            'auth': self.auth,
+            'cookies': self.cookies,
+            'timeout': timeout or self.default_timeout,
+            data_key: payload
+        }
+        request = requests.post(self.url, **post_args)
+>       request.raise_for_status()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [400]>
+
+    def raise_for_status(self):
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/requests/models.py:1021: HTTPError
+
+During handling of the above exception, another exception occurred:
+
+args = (<wandb.apis.public.Api object at 0x7fabba08d7f0>,)
+kwargs = {'name': 'sample', 'type': None}
+message = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+payload = 'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        message = "Whoa, you found a bug."
+        try:
+>           return func(*args, **kwargs)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wandb.apis.public.Api object at 0x7fabba08d7f0>, name = 'sample'
+type = None
+
+    @normalize_exceptions
+    def artifact(self, name, type=None):
+        """
+        Returns a single artifact by parsing path in the form `entity/project/run_id`.
+    
+        Arguments:
+            name: (str) An artifact name. May be prefixed with entity/project. Valid names
+                can be in the following forms:
+                    name:version
+                    name:alias
+                    digest
+            type: (str, optional) The type of artifact to fetch.
+        Returns:
+            A `Artifact` object.
+        """
+        if name is None:
+            raise ValueError("You must specify name= to fetch an artifact.")
+        entity, project, artifact_name = self._parse_artifact_path(name)
+>       artifact = Artifact(self.client, entity, project, artifact_name)
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+client = <wandb.apis.public.RetryingClient object at 0x7fabba09e550>
+entity = 'samuel-haddad', project = 'exercise_14', name = 'sample', attrs = None
+
+    def __init__(self, client, entity, project, name, attrs=None):
+        self.client = client
+        self._entity = entity
+        self._project = project
+        self._artifact_name = name
+        self._attrs = attrs
+        if self._attrs is None:
+>           self._load()
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               ValueError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: ValueError
+
+During handling of the above exception, another exception occurred:
+
+request = <SubRequest 'data' for <Function test_column_presence_and_type>>
+
+    @pytest.fixture(scope="session")
+    def data(request):
+    
+        reference_artifact = request.config.option.reference_artifact
+    
+        if reference_artifact is None:
+            pytest.fail("--reference_artifact missing on command line")
+    
+        sample_artifact = request.config.option.sample_artifact
+    
+        if sample_artifact is None:
+            pytest.fail("--sample_artifact missing on command line")
+    
+        local_path = run.use_artifact(reference_artifact).file()
+        sample1 = pd.read_csv(local_path)
+    
+>       local_path = run.use_artifact(sample_artifact).file()
+
+conftest.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/sdk/wandb_run.py:1957: in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:62: in wrapper
+    six.reraise(CommError, CommError(message, err), sys.exc_info()[2])
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/six.py:718: in reraise
+    raise value.with_traceback(tb)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/normalize.py:24: in wrapper
+    return func(*args, **kwargs)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:520: in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:2583: in __init__
+    self._load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[TypeError("'NoneType' object is not subscriptable") raised in repr()] Artifact object at 0x7fabba09e610>
+
+    def _load(self):
+        query = gql(
+            """
+        query Artifact(
+            $entityName: String!,
+            $projectName: String!,
+            $name: String!
+        ) {
+            project(name: $projectName, entityName: $entityName) {
+                artifact(name: $name) {
+                    ...ArtifactFragment
+                }
+            }
+        }
+        %s
+        """
+            % ARTIFACT_FRAGMENT
+        )
+        response = None
+        try:
+            response = self.client.execute(
+                query,
+                variable_values={
+                    "entityName": self.entity,
+                    "projectName": self.project,
+                    "name": self._artifact_name,
+                },
+            )
+        except Exception:
+            # we check for this after doing the call, since the backend supports raw digest lookups
+            # which don't include ":" and are 32 characters long
+            if ":" not in self._artifact_name and len(self._artifact_name) != 32:
+>               raise ValueError(
+                    'Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")'
+                )
+E               wandb.errors.error.CommError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/apis/public.py:3089: CommError
+=============================== warnings summary ===============================
+../../../../../../../../home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/watchdog/utils/bricks.py:175
+  /home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/wandb/vendor/watchdog/utils/bricks.py:175: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working
+    class OrderedSet(collections.MutableSet):
+
+test_data.py::test_column_presence_and_type
+  /home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/lib/python3.9/site-packages/pluggy/callers.py:187: DtypeWarning: Columns (16) have mixed types.Specify dtype option on import or set low_memory=False.
+    res = hook_impl.function(*args)
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ============================
+ERROR test_data.py::test_column_presence_and_type - wandb.errors.error.CommEr...
+ERROR test_data.py::test_class_names - wandb.errors.error.CommError: Attempte...
+ERROR test_data.py::test_column_ranges - wandb.errors.error.CommError: Attemp...
+ERROR test_data.py::test_kolmogorov_smirnov - wandb.errors.error.CommError: A...
+======================== 2 warnings, 4 errors in 3.23s =========================

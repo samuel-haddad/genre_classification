@@ -1,0 +1,33 @@
+{
+    "os": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.9.19",
+    "heartbeatAt": "2024-03-20T18:09:24.133790",
+    "startedAt": "2024-03-20T18:09:22.778540",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1050 Ti",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "--file_url",
+        "https://github.com/udacity/nd0821-c2-build-model-workflow-exercises/blob/master/lesson-2-data-exploration-and-preparation/exercises/exercise_4/starter/genres_mod.parquet?raw=true",
+        "--artifact_name",
+        "raw_data.parquet",
+        "--artifact_type",
+        "raw_data",
+        "--artifact_description",
+        "Data as downloaded"
+    ],
+    "state": "running",
+    "program": "/mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/download/download_data.py",
+    "codePath": "starter/download/download_data.py",
+    "git": {
+        "remote": "git@github.com:samuel-haddad/genre_classification.git",
+        "commit": "215d9ee69c2ced6a973eeab3d0de781c685ca403"
+    },
+    "email": "smachadd@gmail.com",
+    "root": "/mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification",
+    "host": "DESKTOP-F4NRFP3",
+    "username": "haddadsm",
+    "executable": "/home/haddadsm/miniconda3/envs/mlflow-780eb623ffaabf03b54c31a9271fdd2ae4c45d79/bin/python"
+}

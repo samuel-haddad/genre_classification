@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/mlruns/0/57747db19c50448cbd22d9582734344e/artifacts
+end_time: 1710958041300
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 57747db19c50448cbd22d9582734344e
+run_name: suave-flea-352
+run_uuid: 57747db19c50448cbd22d9582734344e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710957992343
+status: 3
+tags: []
+user_id: haddadsm

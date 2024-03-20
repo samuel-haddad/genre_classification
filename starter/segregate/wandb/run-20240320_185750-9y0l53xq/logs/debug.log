@@ -1,0 +1,76 @@
+2024-03-20 18:57:50,978 INFO    MainThread:61440 [wandb_setup.py:_flush():69] setting env: {'run_group': 'dev', 'project': 'genre_classification_prod'}
+2024-03-20 18:57:50,979 INFO    MainThread:61440 [wandb_setup.py:_flush():69] setting login settings: {}
+2024-03-20 18:57:50,979 INFO    MainThread:61440 [wandb_init.py:_log_setup():334] Logging user logs to /mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/segregate/wandb/run-20240320_185750-9y0l53xq/logs/debug.log
+2024-03-20 18:57:50,980 INFO    MainThread:61440 [wandb_init.py:_log_setup():335] Logging internal logs to /mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/segregate/wandb/run-20240320_185750-9y0l53xq/logs/debug-internal.log
+2024-03-20 18:57:50,981 INFO    MainThread:61440 [wandb_init.py:init():367] calling init triggers
+2024-03-20 18:57:50,981 INFO    MainThread:61440 [wandb_init.py:init():372] wandb.init called with sweep_config: {}
+config: {}
+2024-03-20 18:57:50,982 INFO    MainThread:61440 [wandb_init.py:init():416] starting backend
+2024-03-20 18:57:50,982 INFO    MainThread:61440 [backend.py:_multiprocessing_setup():69] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-03-20 18:57:50,992 INFO    MainThread:61440 [backend.py:ensure_launched():123] starting backend process...
+2024-03-20 18:57:50,996 INFO    MainThread:61440 [backend.py:ensure_launched():127] started backend process with pid: 61472
+2024-03-20 18:57:50,998 INFO    MainThread:61440 [wandb_init.py:init():421] backend started and connected
+2024-03-20 18:57:51,001 INFO    MainThread:61440 [wandb_init.py:init():461] updated telemetry
+2024-03-20 18:57:51,002 INFO    MainThread:61440 [wandb_init.py:init():480] communicating current version
+2024-03-20 18:57:51,650 INFO    MainThread:61440 [wandb_init.py:init():485] got version response upgrade_message: "wandb version 0.16.4 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-03-20 18:57:51,651 INFO    MainThread:61440 [wandb_init.py:init():493] communicating run to backend with 30 second timeout
+2024-03-20 18:57:52,200 INFO    MainThread:61440 [wandb_init.py:init():518] starting run threads in backend
+2024-03-20 18:57:52,380 INFO    MainThread:61440 [wandb_run.py:_console_start():1476] atexit reg
+2024-03-20 18:57:52,384 INFO    MainThread:61440 [wandb_run.py:_redirect():1339] redirect: SettingsConsole.REDIRECT
+2024-03-20 18:57:52,384 INFO    MainThread:61440 [wandb_run.py:_redirect():1344] Redirecting console.
+2024-03-20 18:57:52,385 INFO    MainThread:61440 [redirect.py:install():213] install start
+2024-03-20 18:57:52,385 INFO    MainThread:61440 [redirect.py:install():228] install stop
+2024-03-20 18:57:52,385 INFO    MainThread:61440 [redirect.py:install():213] install start
+2024-03-20 18:57:52,386 INFO    MainThread:61440 [redirect.py:install():228] install stop
+2024-03-20 18:57:52,386 INFO    MainThread:61440 [wandb_run.py:_redirect():1390] Redirects installed.
+2024-03-20 18:57:52,387 INFO    MainThread:61440 [wandb_init.py:init():542] run started, returning control to user process
+2024-03-20 18:58:18,270 INFO    MainThread:61440 [wandb_run.py:_atexit_cleanup():1446] got exitcode: 0
+2024-03-20 18:58:18,271 INFO    MainThread:61440 [wandb_run.py:_restore():1418] restore
+2024-03-20 18:58:18,272 INFO    MainThread:61440 [redirect.py:uninstall():232] uninstall start
+2024-03-20 18:58:18,272 INFO    MainThread:61440 [redirect.py:_stop():287] _stop: stdout
+2024-03-20 18:58:18,272 INFO    MainThread:61440 [redirect.py:_stop():293] _stop closed: stdout
+2024-03-20 18:58:18,272 INFO    stdout    :61440 [redirect.py:_pipe_relay():129] relay done saw last write: stdout
+2024-03-20 18:58:18,273 INFO    stdout    :61440 [redirect.py:_pipe_relay():145] relay done done: stdout
+2024-03-20 18:58:18,273 INFO    MainThread:61440 [redirect.py:_stop():299] _stop joined: stdout
+2024-03-20 18:58:18,273 INFO    MainThread:61440 [redirect.py:_stop():301] _stop rd closed: stdout
+2024-03-20 18:58:18,274 INFO    MainThread:61440 [redirect.py:uninstall():236] uninstall done
+2024-03-20 18:58:18,274 INFO    MainThread:61440 [redirect.py:uninstall():232] uninstall start
+2024-03-20 18:58:18,274 INFO    MainThread:61440 [redirect.py:_stop():287] _stop: stderr
+2024-03-20 18:58:18,274 INFO    MainThread:61440 [redirect.py:_stop():293] _stop closed: stderr
+2024-03-20 18:58:18,274 INFO    stderr    :61440 [redirect.py:_pipe_relay():129] relay done saw last write: stderr
+2024-03-20 18:58:18,275 INFO    stderr    :61440 [redirect.py:_pipe_relay():145] relay done done: stderr
+2024-03-20 18:58:18,275 INFO    MainThread:61440 [redirect.py:_stop():299] _stop joined: stderr
+2024-03-20 18:58:18,275 INFO    MainThread:61440 [redirect.py:_stop():301] _stop rd closed: stderr
+2024-03-20 18:58:18,276 INFO    MainThread:61440 [redirect.py:uninstall():236] uninstall done
+2024-03-20 18:58:18,599 INFO    MainThread:61440 [wandb_run.py:_wait_for_finish():1568] got exit ret: file_counts {
+  wandb_count: 1
+  artifact_count: 2
+}
+pusher_stats {
+  uploaded_bytes: 6708014
+  total_bytes: 6708014
+}
+
+2024-03-20 18:58:25,063 INFO    MainThread:61440 [wandb_run.py:_wait_for_finish():1568] got exit ret: file_counts {
+  wandb_count: 5
+  artifact_count: 2
+}
+pusher_stats {
+  uploaded_bytes: 6709232
+  total_bytes: 6709232
+}
+
+2024-03-20 18:58:27,067 INFO    MainThread:61440 [wandb_run.py:_wait_for_finish():1568] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+  artifact_count: 2
+}
+pusher_stats {
+  uploaded_bytes: 6709232
+  total_bytes: 6709232
+}
+
+2024-03-20 18:58:28,146 INFO    MainThread:61440 [wandb_run.py:_show_files():1790] logging synced files

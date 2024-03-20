@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/mlruns/0/78cacb75f67442a2a0ea953b8ed35a03/artifacts
+end_time: 1710959893409
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 78cacb75f67442a2a0ea953b8ed35a03
+run_name: secretive-zebra-935
+run_uuid: 78cacb75f67442a2a0ea953b8ed35a03
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710959871095
+status: 4
+tags: []
+user_id: haddadsm

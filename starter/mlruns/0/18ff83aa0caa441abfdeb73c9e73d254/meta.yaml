@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/mlruns/0/18ff83aa0caa441abfdeb73c9e73d254/artifacts
+end_time: 1710971727256
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 18ff83aa0caa441abfdeb73c9e73d254
+run_name: bedecked-crane-263
+run_uuid: 18ff83aa0caa441abfdeb73c9e73d254
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710971711521
+status: 3
+tags: []
+user_id: haddadsm

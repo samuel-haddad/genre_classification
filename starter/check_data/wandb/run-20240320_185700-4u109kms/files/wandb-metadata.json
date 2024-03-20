@@ -1,0 +1,33 @@
+{
+    "os": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.9.19",
+    "heartbeatAt": "2024-03-20T21:57:19.840320",
+    "startedAt": "2024-03-20T21:57:00.863250",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1050 Ti",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "-s",
+        "-vv",
+        ".",
+        "--reference_artifact",
+        "exercise_14/preprocessed_data.csv:latest",
+        "--sample_artifact",
+        "preprocessed_data.csv:latest",
+        "--ks_alpha",
+        "0.05"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "git@github.com:samuel-haddad/genre_classification.git",
+        "commit": "215d9ee69c2ced6a973eeab3d0de781c685ca403"
+    },
+    "email": "smachadd@gmail.com",
+    "root": "/mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification",
+    "host": "DESKTOP-F4NRFP3",
+    "username": "haddadsm",
+    "executable": "/home/haddadsm/miniconda3/envs/mlflow-d77761467fe17ede06f4f16aa7215d69384aa1ba/bin/python"
+}

@@ -1,0 +1,58 @@
+2024-03-20 18:43:22,202 Downloading and reading test artifact
+2024-03-20 18:43:23,314 Extracting target from dataframe
+2024-03-20 18:43:23,316 Downloading and reading the exported model
+wandb: ERROR Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+Traceback (most recent call last):
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 3077, in _load
+    response = self.client.execute(
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/old/retry.py", line 132, in wrapped_fn
+    return retrier(*args, **kargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/old/retry.py", line 96, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 181, in execute
+    return self._client.execute(*args, **kwargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py", line 39, in execute
+    request.raise_for_status()
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/normalize.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 520, in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 2583, in __init__
+    self._load()
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 3089, in _load
+    raise ValueError(
+ValueError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "run.py", line 83, in <module>
+    go(args)
+  File "run.py", line 29, in go
+    model_export_path = run.use_artifact(args.model_export).download()
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1957, in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/normalize.py", line 62, in wrapper
+    six.reraise(CommError, CommError(message, err), sys.exc_info()[2])
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/six.py", line 718, in reraise
+    raise value.with_traceback(tb)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/normalize.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 520, in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 2583, in __init__
+    self._load()
+  File "/home/haddadsm/miniconda3/envs/mlflow-5d0e6ecc48383cc870ccda3db116c1511d4f76c5/lib/python3.8/site-packages/wandb/apis/public.py", line 3089, in _load
+    raise ValueError(
+wandb.errors.error.CommError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")

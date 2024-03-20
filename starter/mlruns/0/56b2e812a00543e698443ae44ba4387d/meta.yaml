@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/mlruns/0/56b2e812a00543e698443ae44ba4387d/artifacts
+end_time: 1710971946448
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 56b2e812a00543e698443ae44ba4387d
+run_name: sneaky-kit-921
+run_uuid: 56b2e812a00543e698443ae44ba4387d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710971782424
+status: 3
+tags: []
+user_id: haddadsm

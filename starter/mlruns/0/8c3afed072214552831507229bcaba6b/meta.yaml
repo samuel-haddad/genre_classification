@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/mlruns/0/8c3afed072214552831507229bcaba6b/artifacts
+end_time: 1710971007640
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8c3afed072214552831507229bcaba6b
+run_name: intelligent-bass-485
+run_uuid: 8c3afed072214552831507229bcaba6b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710970877224
+status: 4
+tags: []
+user_id: haddadsm
