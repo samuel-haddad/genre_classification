@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/d/OneDrive/Desktop/samuel-haddad/genre_classification/starter/mlruns/0/56e355a3a7de4f78a33da41b8261db4e/artifacts
+end_time: 1711045869105
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 56e355a3a7de4f78a33da41b8261db4e
+run_uuid: 56e355a3a7de4f78a33da41b8261db4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711045857220
+status: 3
+tags: []
+user_id: haddadsm
